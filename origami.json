@@ -11,8 +11,5 @@
   },
   "ci": {
     "travis": "https://api.travis-ci.org/repos/Financial-Times/o-ft-icons/builds.json"
-  },
-  "demos": [
-    "/demos/main.html"
-  ]
+  }
 }
