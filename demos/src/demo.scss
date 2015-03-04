@@ -1,22 +1,20 @@
-$o-assets-global-path: '../../' !default;
-$o-ft-icons-support-ie7: true;
 $o-ft-icons-is-silent: false;
-
 @import "../../main";
 
 body {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 16px;
-    overflow: auto;
+	overflow: auto;
 }
 
 .demo-count {
-	color:  #777;
+	margin-left: 30px;
+	color: #777777;
 }
 
 .demo-examples {
 	clear: both;
-	margin: 0 0 30px 0;
+	margin: 20px 0;
 	padding: 0;
 	list-style-type: none;
 	overflow: hidden;
@@ -24,25 +22,26 @@ body {
 
 .demo-example {
 	float: left;
-	margin: 0 0 20px 0;
+	margin: 0 0 20px;
 	padding: 0;
-	width: 20%;
+	width: 180px;
+	text-align: center;
+}
+
+.demo-label {
+	display: block;
+	padding: 5px 0;
+	font-size: 14px;
+	color: #333333;
 }
 
 .demo-icon {
 	display: inline-block;
-    border: 1px dotted #333;
+	border: 1px dotted #333333;
 	width: 98px;
 	height: 98px;
 	font-size: 80px;
 	line-height: 100px;
 	text-align: center;
-	color: #000;
-}
-
-.demo-label {
-	display: inline-block;
-	padding: 0 0 0 10px;
-	font-size: 14px;
-	color:  #333;
+	color: #000000;
 }

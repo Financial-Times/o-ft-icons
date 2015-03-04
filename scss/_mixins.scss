@@ -1,14 +1,23 @@
+@function oFtIconsGetSelectors($icon) {
+	$aggregated-selector: ();
+	$aggregated-selector: append($aggregated-selector, unquote('%o-ft-icons-#{$icon}'), comma);
+	@if ($o-ft-icons-is-silent == false) {
+		$aggregated-selector: append($aggregated-selector, unquote('.o-ft-icons-#{$icon}'), comma);
+	}
+	@return $aggregated-selector;
+}
+
 @mixin oFtIconsFontFace() {
-	@if (not $_o-ft-icons-font-face-already-output) {
+	@if ($_o-ft-icons-font-face-already-output == false) {
 		$_o-ft-icons-font-face-already-output: true;
 		@font-face {
 			font-family: $_o-ft-icons-font-name;
-			src: url(oAssetsUse($_o-ft-icons-font-file-name + ".eot", $o-ft-icons-assets-path, $o-ft-icons-version));
-			src: url(oAssetsUse($_o-ft-icons-font-file-name + ".eot?#iefix", $o-ft-icons-assets-path, $o-ft-icons-version)) format("embedded-opentype"),
-				 url(oAssetsUse($_o-ft-icons-font-file-name + ".woff", $o-ft-icons-assets-path, $o-ft-icons-version)) format("woff"),
-				 url(oAssetsUse($_o-ft-icons-font-file-name + ".ttf", $o-ft-icons-assets-path, $o-ft-icons-version)) format("truetype");
-			font-weight:normal;
-			font-style:normal;
+			src: url(oAssetsResolve($_o-ft-icons-font-file-name + ".eot", o-ft-icons));
+			src: url(oAssetsResolve($_o-ft-icons-font-file-name + ".eot?#iefix", o-ft-icons)) format("embedded-opentype"),
+				url(oAssetsResolve($_o-ft-icons-font-file-name + ".woff", o-ft-icons)) format("woff"),
+				url(oAssetsResolve($_o-ft-icons-font-file-name + ".ttf", o-ft-icons)) format("truetype");
+			font-weight: normal;
+			font-style: normal;
 		}
 	}
 }
@@ -18,8 +27,10 @@
 	font-family: $_o-ft-icons-font-name;
 	display: inline-block;
 	vertical-align: middle;
-	font-weight: normal;
-	font-style: normal;
+	// These are marked as !important as the icon font is not designed to be used with faux bold or faux italic styles
+	// If bolder versions of an icon are required a new SVG should be designed and added to the icon font
+	font-weight: normal !important;
+	font-style: normal !important;
 	speak: none;
 	text-decoration: inherit;
 	text-transform: none;
@@ -29,19 +40,34 @@
 }
 
 // Placeholder (and optionally concrete class) for individual icon (modern browsers)
-@mixin oFtIconsIcon($icon, $content) {
-	$icon-selectors: oFtIconsGetSelectors("#{$icon}:before");
+@mixin _oFtIconsStandardsIcon($icon-class, $character-code, $placement: 'before') {
+	$icon-selectors: oFtIconsGetSelectors("#{$icon-class}:#{$placement}");
 	#{$icon-selectors} {
-		content: $content;
+		// a hack to enable outputting of a single backslash;
+		// escaping in Sass is a bit of a mess!
+		// https://github.com/sass/sass/issues/659
+		// http://sassmeister.com/gist/04f5be11c5a6b26b8ff9
+		@if function-exists(selector-append) {
+			// Sass 3.4
+			content: unquote("\"\\#{$character-code}\"");
+		} @else {
+			// Sass 3.3
+			content: str-slice("\x", 1, 1) + $character-code;
+		}
 	}
 }
 
 // Placeholder (and optionally concrete class) for individual icon (IE7 hack)
-@mixin oFtIconsIconIe7($icon, $content) {
-	$icon-selectors: oFtIconsGetSelectors($icon);
-	@include oUseragentTarget(ie7) {
-		#{$icon-selectors} {
-			*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '#{$content}');
-		}
+@mixin _oFtIconsIe7Icon($icon-class, $character-code) {
+	$icon-selectors: oFtIconsGetSelectors($icon-class);
+	#{$icon-selectors} {
+		// Weird way of writing this so that Libsass can read it…
+		#{unquote('*') + zoom}: unquote("expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = ") + "'&#x#{$character-code};&nbsp;'" + unquote(")");
 	}
+}
+
+@mixin oFtIconsIcon($icon-name, $character-code) {
+	@include _oFtIconsIe7Icon(icon--#{$icon-name}, $character-code);
+	@include _oFtIconsStandardsIcon(icon--#{$icon-name}, $character-code);
+	@include _oFtIconsStandardsIcon(icon--#{$icon-name}--after, $character-code, after);
 }
