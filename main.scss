@@ -7,7 +7,7 @@
 
 
 @if ($o-ft-icons-is-silent == false) {
-	@include oFtIconsFontFace();
+	// @include oFtIconsFontFace();
 }
 
 // Output base styles, either as just a placeholder class, or optionally a concrete class too.
