@@ -8,23 +8,23 @@
 }
 
 @mixin oFtIconsFontFace() {
-	@if ($_o-ft-icons-font-face-already-output == false) {
-		$_o-ft-icons-font-face-already-output: true;
-		@font-face {
-			font-family: $_o-ft-icons-font-name;
-			src: url(oAssetsResolve($_o-ft-icons-font-file-name + ".eot", o-ft-icons));
-			src: url(oAssetsResolve($_o-ft-icons-font-file-name + ".eot?#iefix", o-ft-icons)) format("embedded-opentype"),
-				url(oAssetsResolve($_o-ft-icons-font-file-name + ".woff", o-ft-icons)) format("woff"),
-				url(oAssetsResolve($_o-ft-icons-font-file-name + ".ttf", o-ft-icons)) format("truetype");
-			font-weight: normal;
-			font-style: normal;
-		}
-	}
+	// @if ($_o-ft-icons-font-face-already-output == false) {
+	// 	$_o-ft-icons-font-face-already-output: true;
+	// 	@font-face {
+	// 		font-family: $_o-ft-icons-font-name;
+	// 		src: url(oAssetsResolve($_o-ft-icons-font-file-name + ".eot", o-ft-icons));
+	// 		src: url(oAssetsResolve($_o-ft-icons-font-file-name + ".eot?#iefix", o-ft-icons)) format("embedded-opentype"),
+	// 			url(oAssetsResolve($_o-ft-icons-font-file-name + ".woff", o-ft-icons)) format("woff"),
+	// 			url(oAssetsResolve($_o-ft-icons-font-file-name + ".ttf", o-ft-icons)) format("truetype");
+	// 		font-weight: normal;
+	// 		font-style: normal;
+	// 	}
+	// }
 }
 
 // Base styles for all icons
 @mixin oFtIconsBaseIconStyles() {
-	font-family: $_o-ft-icons-font-name;
+	// font-family: $_o-ft-icons-font-name;
 	display: inline-block;
 	vertical-align: middle;
 	// These are marked as !important as the icon font is not designed to be used with faux bold or faux italic styles
@@ -47,13 +47,13 @@
 		// escaping in Sass is a bit of a mess!
 		// https://github.com/sass/sass/issues/659
 		// http://sassmeister.com/gist/04f5be11c5a6b26b8ff9
-		@if function-exists(selector-append) {
-			// Sass 3.4
-			content: unquote("\"\\#{$character-code}\"");
-		} @else {
-			// Sass 3.3
-			content: str-slice("\x", 1, 1) + $character-code;
-		}
+		// @if function-exists(selector-append) {
+		// 	// Sass 3.4
+		// 	content: unquote("\"\\#{$character-code}\"");
+		// } @else {
+		// 	// Sass 3.3
+		// 	content: str-slice("\x", 1, 1) + $character-code;
+		// }
 	}
 }
 
