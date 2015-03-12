@@ -4,7 +4,6 @@ $_o-ft-icons-font-file-name: str-slice('url("../build/ft-icons-f414da96fb9364a63
 // Define character code for each icon
 $_o-ft-icons-icon-map: (
 
-
 		arrow-down: f101,
 
 		arrow-downwards: f102,
@@ -77,76 +76,6 @@ $_o-ft-icons-icon-map: (
 
 		section-house-and-home: f124,
 
-<<<<<<< HEAD
-		@include oFtIconsIconIe7(icon--organisation, "&#xe024;&nbsp;");
-		@include oFtIconsIcon(icon--organisation, "\e024");
-
-		@include oFtIconsIconIe7(icon--pearson, "&#xe025;&nbsp;");
-		@include oFtIconsIcon(icon--pearson, "\e025");
-
-		@include oFtIconsIconIe7(icon--profile, "&#xe026;&nbsp;");
-		@include oFtIconsIcon(icon--profile, "\e026");
-
-		@include oFtIconsIconIe7(icon--prototype-sections, "&#xe027;&nbsp;");
-		@include oFtIconsIcon(icon--prototype-sections, "\e027");
-
-		@include oFtIconsIconIe7(icon--recently-read, "&#xe028;&nbsp;");
-		@include oFtIconsIcon(icon--recently-read, "\e028");
-
-		@include oFtIconsIconIe7(icon--recommended-reads, "&#xe029;&nbsp;");
-		@include oFtIconsIcon(icon--recommended-reads, "\e029");
-
-		@include oFtIconsIconIe7(icon--refresh, "&#xe02a;&nbsp;");
-		@include oFtIconsIcon(icon--refresh, "\e02a");
-
-		@include oFtIconsIconIe7(icon--region, "&#xe02b;&nbsp;");
-		@include oFtIconsIcon(icon--region, "\e02b");
-
-		@include oFtIconsIconIe7(icon--search, "&#xe02c;&nbsp;");
-		@include oFtIconsIcon(icon--search, "\e02c");
-
-		@include oFtIconsIconIe7(icon--settings, "&#xe02d;&nbsp;");
-		@include oFtIconsIcon(icon--settings, "\e02d");
-
-		@include oFtIconsIconIe7(icon--share, "&#xe02e;&nbsp;");
-		@include oFtIconsIcon(icon--share, "\e02e");
-
-		@include oFtIconsIconIe7(icon--sign-in, "&#xe02f;&nbsp;");
-		@include oFtIconsIcon(icon--sign-in, "\e02f");
-
-		@include oFtIconsIconIe7(icon--sign-out, "&#xe030;&nbsp;");
-		@include oFtIconsIcon(icon--sign-out, "\e030");
-
-		@include oFtIconsIconIe7(icon--special-report, "&#xe031;&nbsp;");
-		@include oFtIconsIcon(icon--special-report, "\e031");
-
-		@include oFtIconsIconIe7(icon--subscribe, "&#xe032;&nbsp;");
-		@include oFtIconsIcon(icon--subscribe, "\e032");
-
-		@include oFtIconsIconIe7(icon--tick, "&#xe033;&nbsp;");
-		@include oFtIconsIcon(icon--tick, "\e033");
-
-		@include oFtIconsIconIe7(icon--topics, "&#xe034;&nbsp;");
-		@include oFtIconsIcon(icon--topics, "\e034");
-
-		@include oFtIconsIconIe7(icon--twitter, "&#xe035;&nbsp;");
-		@include oFtIconsIcon(icon--twitter, "\e035");
-
-		@include oFtIconsIconIe7(icon--uk, "&#xe036;&nbsp;");
-		@include oFtIconsIcon(icon--uk, "\e036");
-
-		@include oFtIconsIconIe7(icon--up-arrow, "&#xe037;&nbsp;");
-		@include oFtIconsIcon(icon--up-arrow, "\e037");
-
-		@include oFtIconsIconIe7(icon--up-down-arrow, "&#xe038;&nbsp;");
-		@include oFtIconsIcon(icon--up-down-arrow, "\e038");
-
-		@include oFtIconsIconIe7(icon--upgrade, "&#xe039;&nbsp;");
-		@include oFtIconsIcon(icon--upgrade, "\e039");
-
-		@include oFtIconsIconIe7(icon--world, "&#xe03a;&nbsp;");
-		@include oFtIconsIcon(icon--world, "\e03a");
-=======
 		section-leader-and-letters: f125,
 
 		section-lex: f126,
@@ -186,7 +115,6 @@ $_o-ft-icons-icon-map: (
 		subscribe: f137,
 
 		thumb-up: f138,
->>>>>>> 65f2acef8aac3e97c6ac56b1a54211aba2658eca
 
 		tick: f139
 
