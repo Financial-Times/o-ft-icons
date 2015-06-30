@@ -83,6 +83,7 @@ The latter way is more efficient if you are using more than one icon, as the bas
 
 1. Add or edit an SVG file to the `svg` folder (see SVG file naming rules).
 2. Open a Pull Request to the `next` branch
+3. Rebuild the master branch of [next-assets](/financial-times/next-assets)
 
 ###SVG version
 The icons module uses SVG version 1.1. Files can be created in any vector graphics software. In Adobe Illustrator use the "save as" function and set to version 1.1
