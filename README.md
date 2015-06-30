@@ -38,7 +38,7 @@ In this mode, the o-ft-icons SASS will output a base icon CSS class (`o-ft-icons
 Both the base class and the individual icon class must be applied to the HTML element, for example:
 
     <i class="o-ft-icons-icon o-ft-icons-icon--columnists"><i>
-    
+
 ### 2. Extending the predefined SASS placeholders into your own CSS classes
 
 Import the `o-ft-icons` SASS and include the font-face like so:
@@ -58,7 +58,7 @@ Then either include the base styles and extend a specific icon's styles into one
 }
 ```
 
-…or have separate classes for the base styles and the specific icon: 
+…or have separate classes for the base styles and the specific icon:
 
 ```scss
 .icon {
@@ -79,31 +79,11 @@ Then apply both the base icon and individual icon classes in the HTML:
 The latter way is more efficient if you are using more than one icon, as the base styles will not be duplicated for each icon.
 
 
-##To add or edit icons and build the web font and demo page
+##To add or edit icons and build the web font and demo page for Next
 
-Install the following:
-
-* [fontforge](http://fontforge.org/)
-* [ttfautohint](http://www.freetype.org/ttfautohint/#download)
-
-On a Mac <ahref="http://brew.sh/">Homebrew</a> is a popular package manager to install these programs. You'll also need <a href="http://support.apple.com/kb/ht5293">X11</a> on your Mac.
-
-
-Clone this repo and at the command line, `cd` to the repo's directory and run:
-
-	npm install
-
-Add or edit an SVG file to the `svg` folder (see SVG file naming rules).
-
-Next, run:
-
-	grunt
-
-This will generate the web font from the SVG sources.
-
-Finally, run:
-
-	origami-build-tools demo --local
+1. Add or edit an SVG file to the `svg` folder (see SVG file naming rules).
+2. Open a Pull Request to the `next` branch
+3. Rebuild the master branch of [next-assets](/financial-times/next-assets)
 
 ###SVG version
 The icons module uses SVG version 1.1. Files can be created in any vector graphics software. In Adobe Illustrator use the "save as" function and set to version 1.1
