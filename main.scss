@@ -11,9 +11,10 @@
 
 // Output base styles, either as just a placeholder class, or optionally a concrete class too.
 
-@if ($_o-ft-icons-base-styles-already-output == false) {
+$o-ft-icons-base-icon-selectors: oFtIconsGetSelectors(icon);
 
-	$o-ft-icons-base-icon-selectors: oFtIconsGetSelectors(icon);
+@if (index($_o-ft-icons-base-styles-already-output, $o-ft-icons-base-icon-selectors) == null) {
+
 	#{$o-ft-icons-base-icon-selectors} {
 		@include oFtIconsBaseIconStyles();
 	}
@@ -23,5 +24,5 @@
 		@include oFtIconsIcon($icon-name, $character-code);
 	}
 
-	$_o-ft-icons-base-styles-already-output: true !global;
+	$_o-ft-icons-base-styles-already-output: append($_o-ft-icons-base-styles-already-output, $o-ft-icons-base-icon-selectors) !global;
 }
