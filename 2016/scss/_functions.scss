@@ -9,7 +9,7 @@
 }
 
 @function _oFtIconsImageServiceUrl($icon-name) {
-	@return "/2016/output/svg/#{$icon-name}.svg";
+	@return "#{$o-ft-icons-path}/#{$icon-name}.svg";
 }
 
 @function _oFtIconsImageServiceFallbackUrl($icon-name, $icon-size: 60) {

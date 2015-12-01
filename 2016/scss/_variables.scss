@@ -7,6 +7,10 @@
 /// @type Bool
 $o-ft-icons-is-silent: true !default;
 
+/// Icon path
+/// @type String
+$o-ft-icons-path: 'https://image.webservices.ft.com/v1/images/raw/fticon:' !default;
+
 /// Icon colors
 /// @type List
 $o-ft-icons-icon-colors: (
