@@ -1,16 +1,14 @@
-@import "o-assets/main";
 @import "scss/variables";
 @import "scss/functions";
 @import "scss/mixins";
 
 @if ($_o-ft-icons-base-styles-already-output == false) {
-	.o-ft-icon {
-		&:before,
-		&:after {
-			content: '';
-			display: inline-block;
-			background-size: 100% auto;
-		}
+	.o-ft-icon--before:before,
+	.o-ft-icon--after:after {
+		content: '';
+		display: inline-block;
+		overflow: hidden;
+		background-size: 100% auto;
 	}
 
 	@include _oFtIconsColorVariations();

@@ -2,14 +2,14 @@
 	$color-index: index($o-ft-icons-icon-colors, $color);
 
 	@if ($color-index) {
-		@return percentage(1 * $color-index);
+		@return percentage((10 / length($o-ft-icons-icon-colors)) * ($color-index - 1)) * -1;
 	}
 
 	@error "Icon color variation '#{$color}' is not configured.";
 }
 
 @function _oFtIconsImageServiceUrl($icon-name) {
-	@return "https://image.webservices.ft.com/v1/images/raw/fticon:#{$icon-name}";
+	@return "/2016/output/svg/#{$icon-name}.svg";
 }
 
 @function _oFtIconsImageServiceFallbackUrl($icon-name, $icon-size: 60) {

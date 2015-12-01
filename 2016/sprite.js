@@ -29,9 +29,12 @@ function templateSvg(params) {
       xmlns:xlink="http://www.w3.org/1999/xlink"
       xmlns="http://www.w3.org/2000/svg"
       width="${params.dimensions.width}"
-      height="${params.dimensions.height}"
-      viewBox="0 0 ${params.dimensions.width} ${params.dimensions.height * params.colors.length}">
-      <g id="source">${params.paths}</g>
+      height="${params.dimensions.height * params.colors.length}"
+      viewBox="0 0 ${params.dimensions.width} ${params.dimensions.height * params.colors.length}"
+      preserveAspectRatio="none"
+      x="0"
+      y="0">
+      <defs><g id="source">${params.paths}</g></defs>
       ${templateColors(params)}
     </svg>
   `
