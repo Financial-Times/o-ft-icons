@@ -8,6 +8,8 @@
 		&:before,
 		&:after {
 			content: '';
+			display: inline-block;
+			background-size: 100% auto;
 		}
 	}
 
