@@ -37,28 +37,30 @@ function templateSvg(params) {
   `
 }
 
-const args = minimist(process.argv.slice(2))
-
-if (args.help) {
-  process.stdout.write(
-    [
-      '\nUsage: node generate-sprite.js --icon={icon} --colors=list,of,hex,codes\n',
-      '\nE.G.: node generate-sprite.js --icon=hamburger --colors=ffffff,000000,ff0000\n\n'
-    ].join('')
-  )
-
-  process.exit()
+function formatHelp() {
+  return [
+    '\n',
+    '\tUsage: node sprite.js --icon={filename} --colors=list,of,hex,codes\n',
+    '\tExample: node sprite.js --icon=hamburger.svg --colors=ffffff,000000,ff0000\n',
+    '\n'
+  ].join('')
 }
 
-let svgSource = fs.readFileSync(`${process.cwd()}/svg/${args.icon}.svg`)
-let $ = cheerio.load(svgSource, { xmlMode: true })
+let args = minimist(process.argv.slice(2))
+let output = ''
 
-process.stdout.write(
-  templateSvg({
+if (args.help) {
+  output = formatHelp()
+} else {
+  let svgSource = fs.readFileSync(`${process.cwd()}/${args.icon}`)
+  let $ = cheerio.load(svgSource, { xmlMode: true })
+
+  output = templateSvg({
     dimensions: extractDimensions($),
     colors: args.colors.split(','),
     paths: extractPaths($)
   })
-)
+}
 
+process.stdout.write(output)
 process.exit()
