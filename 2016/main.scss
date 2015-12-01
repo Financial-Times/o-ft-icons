@@ -1,0 +1,22 @@
+@import "o-assets/main";
+@import "scss/variables";
+@import "scss/functions";
+@import "scss/mixins";
+
+@if ($_o-ft-icons-base-styles-already-output == false) {
+	.o-ft-icon {
+		&:before,
+		&:after {
+			content: '';
+		}
+	}
+
+	@include _oFtIconsColorVariations();
+	@include _oFtIconsSizeVariations();
+
+	@each $icon-name in $o-ft-icons-icon-names {
+		@include _oFtIconsIcon($icon-name);
+	}
+
+	$_o-ft-icons-base-styles-already-output: true !global;
+}

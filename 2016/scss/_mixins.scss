@@ -1,0 +1,33 @@
+@mixin _oFtIconsColorVariations() {
+	@each $color in $o-ft-icons-icon-colors {
+		.o-ft-icon--#{$color} {
+			&:before,
+			&:after {
+				background-position: 0 _oFtIconsColorVariationBackgroundPositionY($color);
+			}
+		}
+	}
+}
+
+@mixin _oFtIconsSizeVariations() {
+	@each $key, $value in $o-ft-icons-icon-sizes {
+		.o-ft-icon--#{$key} {
+			&:before,
+			&:after {
+				width: $value + 0px;
+				height: $value + 0px;
+				background-size: ($value + 0px) auto;
+			}
+		}
+	}
+}
+
+@mixin _oFtIconsIcon($icon-name) {
+	.o-ft-icon--#{$icon-name} {
+		&:before,
+		&:after {
+			background-image: linear-gradient(transparent, transparent), url(_oFtIconsImageServiceUrl($icon-name));
+			-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='#{_oFtIconsImageServiceFallbackUrl($icon-name)}', sizingMethod='scale')";
+		}
+	}
+}

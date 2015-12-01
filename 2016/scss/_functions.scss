@@ -1,0 +1,17 @@
+@function _oFtIconsColorVariationBackgroundPositionY($color) {
+	$color-index: index($o-ft-icons-icon-colors, $color);
+
+	@if ($color-index) {
+		@return percentage((1 / length($o-ft-icons-icon-colors)) * $color-index);
+	}
+
+	@error "Icon color variation '#{$color}' is not configured.";
+}
+
+@function _oFtIconsImageServiceUrl($icon-name) {
+  @return "https://image.webservices.ft.com/v1/images/raw/fticon:#{$icon-name}";
+}
+
+@function _oFtIconsImageServiceFallbackUrl($icon-name, $icon-size: 60) {
+  @return "#{_oFtIconsImageServiceUrl($icon-name)}?width=#{$icon-size}";
+}

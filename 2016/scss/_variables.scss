@@ -1,0 +1,95 @@
+////
+/// @group o-ft-icons
+/// @link http://registry.origami.ft.com/components/o-ft-icons
+////
+
+/// Silent mode
+/// @type Bool
+$o-ft-icons-is-silent: true !default;
+
+/// Icon colors
+/// @type List
+$o-ft-icons-icon-colors: (
+	'black',
+	'grey-tint5',
+	'grey-tint3',
+	'grey-tint1',
+	'white',
+	'blue',
+	'section-purple',
+	'claret',
+	'red',
+	'orange'
+) !default;
+
+/// Icon sizes
+/// @type Map
+$o-ft-icons-icon-sizes: (
+	'xs': 16,
+	's':	24,
+	'm':	32,
+	'l':	48,
+	'xl': 64
+) !default;
+
+/// Icons
+/// @type List
+$o-ft-icons-icon-names: (
+	'arrow-down',
+	'arrow-downwards',
+	'arrow-left',
+	'arrow-right',
+	'arrow-up-down',
+	'arrow-up',
+	'arrow-upwards',
+	'clippings',
+	'comment',
+	'cross',
+	'email',
+	'eye',
+	'font-size',
+	'gift',
+	'hamburger',
+	'more',
+	'printer',
+	'profile',
+	'refresh',
+	'search',
+	'section-arts',
+	'section-blogs',
+	'section-business-education',
+	'section-business-life',
+	'section-columnists',
+	'section-companies',
+	'section-ftfm',
+	'section-house-and-home',
+	'section-leader-and-letters',
+	'section-lex',
+	'section-magazine',
+	'section-markets-data',
+	'section-markets',
+	'section-money',
+	'section-special-report',
+	'section-uk',
+	'section-world',
+	'settings',
+	'share',
+	'sign-in',
+	'sign-out',
+	'social-email',
+	'social-facebook',
+	'social-linkedin',
+  'social-pinterest',
+	'social-twitter',
+	'speechbubble',
+	'subscribe',
+	'thumb-up',
+	'tick',
+	'warning'
+);
+
+/// Have the base styles already been output?
+///
+/// @access private
+/// @type Bool
+$_o-ft-icons-base-styles-already-output: false !default;
