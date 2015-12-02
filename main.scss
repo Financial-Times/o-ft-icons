@@ -1,1 +1,19 @@
-@import "2016/main"
+@import "scss/variables";
+@import "scss/functions";
+@import "scss/mixins";
+
+@if ($_o-ft-icons-base-styles-already-output == false) {
+	.o-ft-icon {
+		display: inline-block;
+		background-size: 100% auto;
+	}
+
+	@include _oFtIconsColorVariations();
+	@include _oFtIconsSizeVariations();
+
+	@each $icon-name in $o-ft-icons-icon-names {
+		@include _oFtIconsIcon($icon-name);
+	}
+
+	$_o-ft-icons-base-styles-already-output: true !global;
+}
