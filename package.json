@@ -3,9 +3,6 @@
   "private": true,
   "devDependencies": {
     "cheerio": "^0.19.0",
-    "grunt": "~0.4.4",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-webfont": "~0.4.2",
     "minimist": "^1.2.0"
   }
 }
