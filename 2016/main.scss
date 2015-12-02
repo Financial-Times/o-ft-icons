@@ -3,11 +3,8 @@
 @import "scss/mixins";
 
 @if ($_o-ft-icons-base-styles-already-output == false) {
-	.o-ft-icon--before:before,
-	.o-ft-icon--after:after {
-		content: '';
+	.o-ft-icon {
 		display: inline-block;
-		overflow: hidden;
 		background-size: 100% auto;
 	}
 

@@ -39,12 +39,9 @@ body {
 }
 
 .demo-icon {
-	display: inline-block;
 	border: 1px dotted #333333;
-	width: 98px;
-	height: 98px;
-	font-size: 80px;
-	line-height: 100px;
-	text-align: center;
-	color: #000000;
+
+	&.o-ft-icon--white {
+		background-color: #333333;
+	}
 }
