@@ -4,16 +4,28 @@
 
 @if ($_o-ft-icons-base-styles-already-output == false) {
 	.o-ft-icon {
+		position: relative;
 		display: inline-block;
-		background-size: 100% auto;
+		overflow: hidden;
+
+		// Create a canvas for the background because background-position X/Y
+		// cannot be manipulated individually but position top/left can.
+		&:after {
+			content: '';
+			position: absolute;
+			width: percentage(length($o-ft-icons-icon-colors));
+			height: percentage(length($o-ft-icons-icon-names));
+			// Android 2.x doesn't support SVG but does support background-size
+			background-image: url('#{_oFtIconsImageUrl()}?format=png');
+			background-image: url('#{_oFtIconsImageUrl()}');
+			background-repeat: no-repeat;
+			background-size: 100%;
+		}
 	}
 
-	@include _oFtIconsColorVariations();
-	@include _oFtIconsSizeVariations();
-
-	@each $icon-name in $o-ft-icons-icon-names {
-		@include _oFtIconsIcon($icon-name);
-	}
+	@include _oFtIconsSizes();
+	@include _oFtIconsColors();
+	@include _oFtIconsNames();
 
 	$_o-ft-icons-base-styles-already-output: true !global;
 }

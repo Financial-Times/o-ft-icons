@@ -9,21 +9,28 @@ $o-ft-icons-is-silent: true !default;
 
 /// Icon path
 /// @type String
-$o-ft-icons-path: 'https://image.webservices.ft.com/v1/images/raw/fticon:' !default;
+$o-ft-icons-path: 'https://image.webservices.ft.com/v1/images/raw/fticon:spritesheet' !default;
 
 /// Icon colors
 /// @type List
 $o-ft-icons-icon-colors: (
-	'black',
-	'grey-tint5',
-	'grey-tint3',
-	'grey-tint1',
-	'white',
-	'blue',
-	'section-purple',
-	'claret',
-	'red',
-	'orange'
+	'pink':       #fff1e0,
+	'black':      #000000,
+	'white':      #ffffff,
+	'blue':       #2e6e9e,
+	'dark-blue':  #275e86,
+	'claret':     #9e2f50,
+	'orange':     #d66d06,
+	'grey-tint1': #b0b0b0,
+	'grey-tint2': #999999,
+	'grey-tint3': #777777,
+	'grey-tint4': #505050,
+	'grey-tint5': #333333,
+	'pink-tint1': #f6e9d8,
+	'pink-tint2': #e9decf,
+	'pink-tint3': #cec6b9,
+	'pink-tint4': #a7a59b,
+	'pink-tint5': #74736c
 ) !default;
 
 /// Icon sizes
@@ -43,8 +50,8 @@ $o-ft-icons-icon-names: (
 	'arrow-downwards',
 	'arrow-left',
 	'arrow-right',
-	'arrow-up-down',
 	'arrow-up',
+	'arrow-up-down',
 	'arrow-upwards',
 	'clippings',
 	'comment',
@@ -70,8 +77,8 @@ $o-ft-icons-icon-names: (
 	'section-leader-and-letters',
 	'section-lex',
 	'section-magazine',
-	'section-markets-data',
 	'section-markets',
+	'section-markets-data',
 	'section-money',
 	'section-special-report',
 	'section-uk',
@@ -83,7 +90,7 @@ $o-ft-icons-icon-names: (
 	'social-email',
 	'social-facebook',
 	'social-linkedin',
-  'social-pinterest',
+	'social-pinterest',
 	'social-twitter',
 	'speechbubble',
 	'subscribe',

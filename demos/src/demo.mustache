@@ -1,12 +1,11 @@
 {{#icons}}
+<h2>{{name}}</h2>
 <ul class="demo-examples">
 	{{#colors}}
 	<li class="demo-example">
-		<i class="o-ft-icon o-ft-icon--xl o-ft-icon--{{.}} o-ft-icon--{{name}} demo-icon"></i>
-		<span class="demo-label">{{name}}, {{.}}</span>
+		<i class="o-ft-icon o-ft-icon--xl o-ft-icon--{{name}} o-ft-icon--{{.}} demo-icon"></i>
+		<span class="demo-label">{{.}}</span>
 	</li>
 	{{/colors}}
 </ul>
 {{/icons}}
-
-<p class="demo-count">{{icons.length}} icons in a web font generated from SVG sources.</p>

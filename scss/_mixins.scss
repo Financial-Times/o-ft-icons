@@ -1,23 +1,32 @@
-@mixin _oFtIconsColorVariations() {
-	@each $color in $o-ft-icons-icon-colors {
-		.o-ft-icon--#{$color} {
-			background-position: 0 _oFtIconsColorVariationBackgroundPositionY($color);
-		}
-	}
-}
-
-@mixin _oFtIconsSizeVariations() {
+@mixin _oFtIconsSizes() {
 	@each $key, $value in $o-ft-icons-icon-sizes {
 		.o-ft-icon--#{$key} {
 			width: $value + 0px;
 			height: $value + 0px;
+
+			&:after {
+				background-image: url('#{_oFtIconsImageUrl()}?format=png&size=#{$value}')\9;
+			}
 		}
 	}
 }
 
-@mixin _oFtIconsIcon($icon-name) {
-	.o-ft-icon--#{$icon-name} {
-		background-image: linear-gradient(transparent, transparent), url(_oFtIconsImageServiceUrl($icon-name));
-		-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='#{_oFtIconsImageServiceFallbackUrl($icon-name)}', sizingMethod='scale')";
+@mixin _oFtIconsColors() {
+	@each $color-name, $color-code in $o-ft-icons-icon-colors {
+		.o-ft-icon--#{$color-name} {
+			&:after {
+			 	left: _oFtIconsImagePositionX($color-name);
+			}
+		}
+	}
+}
+
+@mixin _oFtIconsNames() {
+	@each $icon-name in $o-ft-icons-icon-names {
+		.o-ft-icon--#{$icon-name} {
+			&:after {
+				top: _oFtIconsImagePositionY($icon-name);
+			}
+		}
 	}
 }
