@@ -28,6 +28,10 @@
 	}
 }
 
+/// Base icon styles
+///
+/// @example scss
+///  @include oFtIconsIconStyles();
 @mixin oFtIconsIconStyles() {
 	position: relative;
 	display: inline-block;
@@ -49,7 +53,20 @@
 	}
 }
 
+/// Specify icon size
+///
+/// @example scss
+///  @include oFtIconsIconSize(32);
+///
+/// @param {Number|String} $icon-size - Icon size in px or keyword
 @mixin oFtIconsIconSize($icon-size) {
+	@if (type-of($icon-size) == 'string') {
+		$icon-size: map-get($o-ft-icons-icon-sizes, $icon-size);
+	}
+	@if ($icon-size == null) {
+		@error "Size is not configured.";
+	}
+
 	width: $icon-size + 0px;
 	height: $icon-size + 0px;
 
@@ -58,14 +75,42 @@
 	}
 }
 
+/// Specify icon colour
+///
+/// @example scss
+///  @include oFtIconsIconColor('blue');
+///
+/// @param {String} $color-name - Name of colour
 @mixin oFtIconsIconColor($color-name) {
 	&:after {
 		left: _oFtIconsImagePositionX($color-name);
 	}
 }
 
+/// Specify icon name
+///
+/// @example scss
+///  @include oFtIconsIconName('hamburger');
+///
+/// @param {String} $icon-name - Name of icon
 @mixin oFtIconsIconName($icon-name) {
 	&:after {
 		top: _oFtIconsImagePositionY($icon-name);
 	}
+}
+
+/// Add an icon specifying size, colour and name.
+///
+/// @example scss
+///  @include oFtIconsIcon(32, 'blue', 'hamburger');
+///  @include oFtIconsIcon('s', 'blue', 'hamburger');
+///
+/// @param {Number|String} $icon-size - Icon size in px or keyword
+/// @param {String} $color-name - Name of colour
+/// @param {String} $icon-name - Name of icon
+@mixin oFtIconsIcon($icon-size, $color-name, $icon-name) {
+	@include oFtIconsIconStyles();
+	@include oFtIconsIconSize($icon-size);
+	@include oFtIconsIconColor($color-name);
+	@include oFtIconsIconName($icon-name);
 }

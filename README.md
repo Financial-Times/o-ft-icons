@@ -42,17 +42,24 @@ $o-ft-icons-is-silent: false;
 
 @import "o-ft-icons/main";
 
-
 .icon-columnists {
 	@include oFtIconsIconStyles();
 	@include oFtIconsIconName('section-columnists');
 }
 
-.icon-columnists--large-claret {
-	// Must be a preconfigured size (16, 24, 32, 48, 64)
-	@include oFtIconsIconSize(32);
+.icon-columnists--large {
+	// Must be a preconfigured size
+	@include oFtIconsIconSize('l');
+}
+
+.icon-columnists--claret {
 	// Named colour from o-colors
 	@include oFtIconsIconColor('claret');
+}
+
+.icon-hamburger {
+	// Quick use mixin to specify size, colour and icon name
+	@include oFtIconsIcon('s', 'black', 'hamburger');
 }
 ```
 
