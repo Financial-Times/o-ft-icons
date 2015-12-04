@@ -69,9 +69,9 @@ $o-ft-icons-is-silent: false;
 
 ## Add / edit icons, build the sprite sheet and demo page
 
-### Building the sprite sheet
+The sprite sheets and .png fallbacks have been generated using [a very MVP sprite generation service](https://github.com/i-like-robots/svg-sprite-generator). The source SVG files are contained within this repository.
 
-_TODO_
+The very MVP sprite generation service takes the individual source SVG icons and combines them into a single file. When running the service then uses this file to extract and manipulate each icon into a sprite sheet.
 
 ### SVG version
 The icons module uses SVG version 1.1. Files can be created in any vector graphics software. In Adobe Illustrator use the "save as" function and set to version 1.1
