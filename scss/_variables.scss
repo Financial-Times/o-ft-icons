@@ -9,7 +9,7 @@ $o-ft-icons-is-silent: true !default;
 
 /// Icon path
 /// @type String
-$o-ft-icons-path: 'https://image.webservices.ft.com/v1/images/raw/fticon:spritesheet' !default;
+$o-ft-icons-path: oAssetsResolve('img/spritesheet', 'o-ft-icons') !default;
 
 /// Icon colors
 /// @type List
@@ -37,9 +37,9 @@ $o-ft-icons-icon-colors: (
 /// @type Map
 $o-ft-icons-icon-sizes: (
 	'xs': 16,
-	's':	24,
-	'm':	32,
-	'l':	48,
+	's':  24,
+	'm':  32,
+	'l':  48,
 	'xl': 64
 ) !default;
 
