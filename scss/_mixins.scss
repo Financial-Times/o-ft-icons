@@ -1,9 +1,15 @@
+/// Generate base icon class
+///
+/// @private
 @mixin _oFtIconsStyles() {
 	.o-ft-icon {
 		@include oFtIconsIconStyles();
 	}
 }
 
+/// Generate icon size variation classes
+///
+/// @private
 @mixin _oFtIconsSizes() {
 	@each $key, $value in $o-ft-icons-icon-sizes {
 		.o-ft-icon--#{$key} {
@@ -12,6 +18,9 @@
 	}
 }
 
+/// Generate icon color variation classes
+///
+/// @private
 @mixin _oFtIconsColors() {
 	@each $color-name, $color-code in $o-ft-icons-icon-colors {
 		.o-ft-icon--#{$color-name} {
@@ -20,6 +29,9 @@
 	}
 }
 
+/// Generate icon name variation classes
+///
+/// @private
 @mixin _oFtIconsNames() {
 	@each $icon-name in $o-ft-icons-icon-names {
 		.o-ft-icon--#{$icon-name} {
@@ -80,7 +92,7 @@
 /// @example scss
 ///  @include oFtIconsIconColor('blue');
 ///
-/// @param {String} $color-name - Name of colour
+/// @param {String} $color-name - Name of colour in palette
 @mixin oFtIconsIconColor($color-name) {
 	&:after {
 		left: _oFtIconsImagePositionX($color-name);
@@ -106,7 +118,7 @@
 ///  @include oFtIconsIcon('s', 'blue', 'hamburger');
 ///
 /// @param {Number|String} $icon-size - Icon size in px or keyword
-/// @param {String} $color-name - Name of colour
+/// @param {String} $color-name - Name of colour in palette
 /// @param {String} $icon-name - Name of icon
 @mixin oFtIconsIcon($icon-size, $color-name, $icon-name) {
 	@include oFtIconsIconStyles();
