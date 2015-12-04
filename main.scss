@@ -2,9 +2,8 @@
 @import "scss/functions";
 @import "scss/mixins";
 
-@if ($_o-ft-icons-base-styles-already-output == false) {
-
-	@include _oFtIconsBaseStyles();
+@if ($_o-ft-icons-base-styles-already-output == false and $o-ft-icons-is-silent == false) {
+	@include _oFtIconsStyles();
 	@include _oFtIconsSizes();
 	@include _oFtIconsColors();
 	@include _oFtIconsNames();
