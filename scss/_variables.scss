@@ -13,6 +13,7 @@ $o-ft-icons-path: oAssetsResolve('img/spritesheet', 'o-ft-icons') !default;
 
 /// Icon colors
 /// @type List
+// TODO: use $o-colors-palette when final next palette is decided
 $o-ft-icons-icon-colors: (
 	'pink':       #fff1e0,
 	'black':      #000000,
