@@ -35,3 +35,11 @@
 @function _oFtIconsImageUrl() {
 	@return "#{$o-ft-icons-path}";
 }
+
+/// Get zoom level for icon size for old IE fallback
+///
+/// @private
+/// @param {Number} $icon-size - Target size of icon in px
+@function _oFtIconsIeZoomLevel($icon-size) {
+	@return 1 / $o-ft-icons-icon-base-size * $icon-size;
+}

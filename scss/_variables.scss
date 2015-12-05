@@ -34,6 +34,10 @@ $o-ft-icons-icon-colors: (
 	'pink-tint5': #74736c
 ) !default;
 
+/// Icon base size
+/// @type Number
+$o-ft-icons-icon-base-size: 50 !default;
+
 /// Icon sizes
 /// @type Map
 $o-ft-icons-icon-sizes: (

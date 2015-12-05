@@ -48,10 +48,12 @@
 	position: relative;
 	display: inline-block;
 	overflow: hidden;
+	background-image: #{url('#{_oFtIconsImageUrl()}.png')}\9;
 
 	// Create a canvas for the background because background-position X/Y
 	// cannot be manipulated individually but position top/left can.
-	&:after {
+	// Double colon syntax is ignored by old IE.
+	&::after {
 		content: '';
 		position: absolute;
 		width: percentage(length($o-ft-icons-icon-colors));
@@ -82,9 +84,11 @@
 	width: $icon-size + 0px;
 	height: $icon-size + 0px;
 
-	&:after {
-		background-image: url('#{_oFtIconsImageUrl()}-#{$icon-size}.png')\9;
-	}
+	// Old IE fallback uses zoom to scale icon size
+	width: #{$o-ft-icons-icon-base-size + 0px}\9;
+	height: #{$o-ft-icons-icon-base-size + 0px}\9;
+	// Some browsers other than IE did actually implement zoom!
+	zoom: #{_oFtIconsIeZoomLevel($icon-size)}\9;
 }
 
 /// Specify icon colour
@@ -94,7 +98,10 @@
 ///
 /// @param {String} $color-name - Name of colour in palette
 @mixin oFtIconsIconColor($color-name) {
-	&:after {
+	// For old IE
+	background-position-x: #{_oFtIconsImagePositionX($color-name)}\9;
+
+	&::after {
 		left: _oFtIconsImagePositionX($color-name);
 	}
 }
@@ -106,7 +113,10 @@
 ///
 /// @param {String} $icon-name - Name of icon
 @mixin oFtIconsIconName($icon-name) {
-	&:after {
+	// For old IE
+	background-position-y: #{_oFtIconsImagePositionY($icon-name)}\9;
+
+	&::after {
 		top: _oFtIconsImagePositionY($icon-name);
 	}
 }
