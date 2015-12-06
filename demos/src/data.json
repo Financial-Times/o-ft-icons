@@ -1,4 +1,11 @@
 {
+	"sizes": [
+		"xl",
+		"l",
+		"m",
+		"s",
+		"xs"
+	],
 	"colors": [
 		"pink",
 		"black",
