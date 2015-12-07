@@ -85,7 +85,10 @@
 	&:after {
 		// Old IE fallback uses zoom to scale icon size.
 		// Other browsers have implemented zoom so it needs scoping to IE only.
-		zoom: #{_oFtIconsIeZoomLevel($icon-size)}\9;
+		// <http://keithclark.co.uk/articles/moving-ie-specific-css-into-media-blocks/>
+		@media \0screen\,screen\9 {
+			zoom: _oFtIconsIeZoomLevel($icon-size);
+		}
 	}
 }
 
@@ -100,7 +103,9 @@
 		left: _oFtIconsImagePositionX($color-name);
 		// % based sizes are calculated against original element size, not the
 		// parent or scaled size in IE.
-		left: #{_oFtIconsImagePositionX($color-name, $ie-fallback: true)}\9;
+		@media \0screen\,screen\9 {
+			left: _oFtIconsImagePositionX($color-name, $ie-fallback: true);
+		}
 	}
 }
 
@@ -115,7 +120,9 @@
 		top: _oFtIconsImagePositionY($icon-name);
 		// % based sizes are calculated against original element size, not the
 		// parent or scaled size in IE.
-		top: #{_oFtIconsImagePositionY($icon-name, $ie-fallback: true)}\9;
+		@media \0screen\,screen\9 {
+			top: _oFtIconsImagePositionY($icon-name, $ie-fallback: true);
+		}
 	}
 }
 
