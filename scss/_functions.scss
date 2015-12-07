@@ -2,12 +2,17 @@
 ///
 /// @private
 /// @param {String} $color-name - Name of colour in palette
-@function _oFtIconsImagePositionX($color-name) {
+/// @param {Boolean} $ie-fallback - Calculate based on icon base size for old IE
+@function _oFtIconsImagePositionX($color-name, $ie-fallback: false) {
 	$color-keys: map-keys($o-ft-icons-icon-colors);
 	$color-index: index($color-keys, $color-name);
 
 	@if ($color-index) {
-		@return percentage(1 * ($color-index - 1)) * -1;
+		@if ($ie-fallback) {
+			@return $o-ft-icons-icon-base-size * ($color-index - 1) * -1 + 0px;
+		} @else {
+			@return percentage(1 * ($color-index - 1)) * -1;
+		}
 	}
 
 	@error "Icon color '#{$color-name}' is not configured.";
@@ -17,11 +22,16 @@
 ///
 /// @private
 /// @param {String} $icon-name - Name of icon
-@function _oFtIconsImagePositionY($icon-name) {
+/// @param {Boolean} $ie-fallback - Calculate based on icon base size for old IE
+@function _oFtIconsImagePositionY($icon-name, $ie-fallback: false) {
 	$icon-index: index($o-ft-icons-icon-names, $icon-name);
 
 	@if ($icon-index) {
-		@return percentage(1 * ($icon-index - 1)) * -1;
+		@if ($ie-fallback) {
+			@return $o-ft-icons-icon-base-size * ($icon-index - 1) * -1 + 0px;
+		} @else {
+			@return percentage(1 * ($icon-index - 1)) * -1;
+		}
 	}
 
 	@error "Icon name '#{$icon-name}' is not configured.";

@@ -48,12 +48,10 @@
 	position: relative;
 	display: inline-block;
 	overflow: hidden;
-	background-image: #{url('#{_oFtIconsImageUrl()}.png')}\9;
 
 	// Create a canvas for the background because background-position X/Y
 	// cannot be manipulated individually but position top/left can.
-	// Double colon syntax is ignored by old IE.
-	&::after {
+	&:after {
 		content: '';
 		position: absolute;
 		width: percentage(length($o-ft-icons-icon-colors));
@@ -84,11 +82,11 @@
 	width: $icon-size + 0px;
 	height: $icon-size + 0px;
 
-	// Old IE fallback uses zoom to scale icon size
-	width: #{$o-ft-icons-icon-base-size + 0px}\9;
-	height: #{$o-ft-icons-icon-base-size + 0px}\9;
-	// Some browsers other than IE did actually implement zoom!
-	zoom: #{_oFtIconsIeZoomLevel($icon-size)}\9;
+	&:after {
+		// Old IE fallback uses zoom to scale icon size.
+		// Other browsers have implemented zoom so it needs scoping to IE only.
+		zoom: #{_oFtIconsIeZoomLevel($icon-size)}\9;
+	}
 }
 
 /// Specify icon colour
@@ -98,11 +96,11 @@
 ///
 /// @param {String} $color-name - Name of colour in palette
 @mixin oFtIconsIconColor($color-name) {
-	// For old IE
-	background-position-x: #{_oFtIconsImagePositionX($color-name)}\9;
-
-	&::after {
+	&:after {
 		left: _oFtIconsImagePositionX($color-name);
+		// % based sizes are calculated against original element size, not the
+		// parent or scaled size in IE.
+		left: #{_oFtIconsImagePositionX($color-name, $ie-fallback: true)}\9;
 	}
 }
 
@@ -113,11 +111,11 @@
 ///
 /// @param {String} $icon-name - Name of icon
 @mixin oFtIconsIconName($icon-name) {
-	// For old IE
-	background-position-y: #{_oFtIconsImagePositionY($icon-name)}\9;
-
-	&::after {
+	&:after {
 		top: _oFtIconsImagePositionY($icon-name);
+		// % based sizes are calculated against original element size, not the
+		// parent or scaled size in IE.
+		top: #{_oFtIconsImagePositionY($icon-name, $ie-fallback: true)}\9;
 	}
 }
 
