@@ -2,14 +2,16 @@
 ///
 /// @private
 /// @param {String} $color-name - Name of colour in palette
-/// @param {Boolean} $ie-fallback - Calculate based on icon base size for old IE
-@function _oFtIconsImagePositionX($color-name, $ie-fallback: false) {
+/// @param {Boolean} $fallback - Calculate based on native sprite sheet icon size
+@function _oFtIconsImagePositionX($color-name, $fallback: false) {
 	$color-keys: map-keys($o-ft-icons-icon-colors);
 	$color-index: index($color-keys, $color-name);
 
 	@if ($color-index) {
-		@if ($ie-fallback) {
-			@return $o-ft-icons-icon-base-size * ($color-index - 1) * -1 + 0px;
+		@if ($fallback) {
+			// Background images cannot be scaled in old IE so position it based
+			// on the native sprite sheet size.
+			@return $o-ft-icons-icon-native-size * ($color-index - 1) * -1 + px;
 		} @else {
 			@return percentage(1 * ($color-index - 1)) * -1;
 		}
@@ -22,13 +24,15 @@
 ///
 /// @private
 /// @param {String} $icon-name - Name of icon
-/// @param {Boolean} $ie-fallback - Calculate based on icon base size for old IE
-@function _oFtIconsImagePositionY($icon-name, $ie-fallback: false) {
+/// @param {Boolean} $fallback - Calculate based on native sprite sheet icon size
+@function _oFtIconsImagePositionY($icon-name, $fallback: false) {
 	$icon-index: index($o-ft-icons-icon-names, $icon-name);
 
 	@if ($icon-index) {
-		@if ($ie-fallback) {
-			@return $o-ft-icons-icon-base-size * ($icon-index - 1) * -1 + 0px;
+		@if ($fallback) {
+			// Background images cannot be scaled in old IE so position it based
+			// on the native sprite sheet size.
+			@return $o-ft-icons-icon-native-size * ($icon-index - 1) * -1 + px;
 		} @else {
 			@return percentage(1 * ($icon-index - 1)) * -1;
 		}
@@ -46,10 +50,10 @@
 	@return "#{$o-ft-icons-path}";
 }
 
-/// Get zoom level for icon size for old IE fallback
+/// Calculates scale between on native size and target size for old IE zoom
 ///
 /// @private
 /// @param {Number} $icon-size - Target size of icon in px
 @function _oFtIconsIeZoomLevel($icon-size) {
-	@return 1 / $o-ft-icons-icon-base-size * $icon-size;
+	@return 1 / $o-ft-icons-icon-native-size * $icon-size;
 }
