@@ -7,11 +7,11 @@
 /// @type Bool
 $o-ft-icons-is-silent: true !default;
 
-/// Icon path
+/// Sprite sheet path (no extension)
 /// @type String
 $o-ft-icons-path: oAssetsResolve('img/spritesheet', 'o-ft-icons') !default;
 
-/// Icon colors
+/// List of icon colors
 /// @type List
 // TODO: use $o-colors-palette when final next palette is decided
 $o-ft-icons-icon-colors: (
@@ -38,7 +38,7 @@ $o-ft-icons-icon-colors: (
 /// @type Number
 $o-ft-icons-icon-native-size: 50 !default;
 
-/// Icon sizes
+/// List of icon sizes
 /// @type Map
 $o-ft-icons-icon-sizes: (
 	'xs': 16,
@@ -48,9 +48,9 @@ $o-ft-icons-icon-sizes: (
 	'xl': 64
 ) !default;
 
-/// Icons
+/// List of icon symbols
 /// @type List
-$o-ft-icons-icon-names: (
+$o-ft-icons-icon-symbols: (
 	'arrow-down',
 	'arrow-downwards',
 	'arrow-left',

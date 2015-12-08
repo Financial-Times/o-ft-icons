@@ -6,7 +6,7 @@
 	@include _oFtIconsStyles();
 	@include _oFtIconsSizes();
 	@include _oFtIconsColors();
-	@include _oFtIconsNames();
+	@include _oFtIconsSymbols();
 
 	$_o-ft-icons-base-styles-already-output: true !global;
 }

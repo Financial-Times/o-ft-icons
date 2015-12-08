@@ -1,7 +1,7 @@
-/// Get spritesheet X position based on required color
+/// Get sprite sheet X position based on required color
 ///
 /// @private
-/// @param {String} $color-name - Name of colour in palette
+/// @param {String} $color-name - Name of color from palette
 /// @param {Boolean} $fallback - Calculate based on native sprite sheet icon size
 @function _oFtIconsImagePositionX($color-name, $fallback: false) {
 	$color-keys: map-keys($o-ft-icons-icon-colors);
@@ -17,40 +17,40 @@
 		}
 	}
 
-	@error "Icon color '#{$color-name}' is not configured.";
+	@error "Color '#{$color-name}' is not configured.";
 }
 
-/// Get spritesheet Y position based on required icon
+/// Get sprite sheet Y position based on required symbol
 ///
 /// @private
-/// @param {String} $icon-name - Name of icon
+/// @param {String} $symbol-name - Name of symbol from symbols list
 /// @param {Boolean} $fallback - Calculate based on native sprite sheet icon size
-@function _oFtIconsImagePositionY($icon-name, $fallback: false) {
-	$icon-index: index($o-ft-icons-icon-names, $icon-name);
+@function _oFtIconsImagePositionY($symbol-name, $fallback: false) {
+	$symbol-index: index($o-ft-icons-icon-symbols, $symbol-name);
 
-	@if ($icon-index) {
+	@if ($symbol-index) {
 		@if ($fallback) {
 			// Background images cannot be scaled in old IE so position it based
 			// on the native sprite sheet size.
-			@return $o-ft-icons-icon-native-size * ($icon-index - 1) * -1 + px;
+			@return $o-ft-icons-icon-native-size * ($symbol-index - 1) * -1 + px;
 		} @else {
-			@return percentage(1 * ($icon-index - 1)) * -1;
+			@return percentage(1 * ($symbol-index - 1)) * -1;
 		}
 	}
 
-	@error "Icon name '#{$icon-name}' is not configured.";
+	@error "Symbol '#{$symbol-name}' is not configured.";
 }
 
 /// Get spritesheet URL or path
 ///
 /// @private
 // TODO: In future this could generate a path to load only the configured
-// sprites and colours via the image service.
+// sprites and colors via the image service.
 @function _oFtIconsImageUrl() {
 	@return "#{$o-ft-icons-path}";
 }
 
-/// Calculates scale between on native size and target size for old IE zoom
+/// Calculates scale between native size and target size for old IE zoom
 ///
 /// @private
 /// @param {Number} $icon-size - Target size of icon in px

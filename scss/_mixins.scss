@@ -29,13 +29,13 @@
 	}
 }
 
-/// Generate icon name variation classes
+/// Generate icon symbol variation classes
 ///
 /// @private
-@mixin _oFtIconsNames() {
-	@each $icon-name in $o-ft-icons-icon-names {
-		.o-ft-icon--#{$icon-name} {
-			@include oFtIconsIconName($icon-name);
+@mixin _oFtIconsSymbols() {
+	@each $symbol-name in $o-ft-icons-icon-symbols {
+		.o-ft-icon--#{$symbol-name} {
+			@include oFtIconsIconSymbol($symbol-name);
 		}
 	}
 }
@@ -57,7 +57,7 @@
 		position: absolute;
 		// Scale the canvas to the size of the background image to avoid clipping.
 		width: percentage(length($o-ft-icons-icon-colors));
-		height: percentage(length($o-ft-icons-icon-names));
+		height: percentage(length($o-ft-icons-icon-symbols));
 		// Android 2.x doesn't support SVG but does support background-size...
 		background-image: url('#{_oFtIconsImageUrl()}.png');
 		// ... however, it will download the SVG but multi-backgrounds stops it...
@@ -97,12 +97,12 @@
 	}
 }
 
-/// Specify icon colour
+/// Specify icon color
 ///
 /// @example scss
 ///  @include oFtIconsIconColor('blue');
 ///
-/// @param {String} $color-name - Name of colour in palette
+/// @param {String} $color-name - Name of color from palette
 @mixin oFtIconsIconColor($color-name) {
 	&:after {
 		left: _oFtIconsImagePositionX($color-name, $fallback: true);
@@ -113,34 +113,34 @@
 	}
 }
 
-/// Specify icon name
+/// Specify icon symbol
 ///
 /// @example scss
 ///  @include oFtIconsIconName('hamburger');
 ///
-/// @param {String} $icon-name - Name of icon
-@mixin oFtIconsIconName($icon-name) {
+/// @param {String} $symbol-name - Name of symbol from symbols list
+@mixin oFtIconsIconSymbol($symbol-name) {
 	&:after {
-		top: _oFtIconsImagePositionY($icon-name, $fallback: true);
+		top: _oFtIconsImagePositionY($symbol-name, $fallback: true);
 
 		@media all and (min-width: 0) {
-			top: _oFtIconsImagePositionY($icon-name);
+			top: _oFtIconsImagePositionY($symbol-name);
 		}
 	}
 }
 
-/// Add an icon specifying size, colour and name.
+/// Add an icon specifying size, color and name.
 ///
 /// @example scss
 ///  @include oFtIconsIcon(32, 'blue', 'hamburger');
 ///  @include oFtIconsIcon('s', 'blue', 'hamburger');
 ///
 /// @param {Number|String} $icon-size - Icon size in px or keyword
-/// @param {String} $color-name - Name of colour in palette
-/// @param {String} $icon-name - Name of icon
-@mixin oFtIconsIcon($icon-size, $color-name, $icon-name) {
+/// @param {String} $color-name - Name of color from palette
+/// @param {String} $symbol-name - Name of symbol from symbols list
+@mixin oFtIconsIcon($icon-size, $color-name, $symbol-name) {
 	@include oFtIconsIconStyles();
 	@include oFtIconsIconSize($icon-size);
 	@include oFtIconsIconColor($color-name);
-	@include oFtIconsIconName($icon-name);
+	@include oFtIconsIconSymbol($symbol-name);
 }
