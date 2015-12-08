@@ -79,8 +79,8 @@
 		@error "Size is not configured.";
 	}
 
-	width: $icon-size + 0px;
-	height: $icon-size + 0px;
+	width: $icon-size + px;
+	height: $icon-size + px;
 
 	&:after {
 		// Old IE fallback uses zoom to scale icon size.
