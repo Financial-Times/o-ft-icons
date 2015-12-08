@@ -7,17 +7,102 @@
 /// @type Bool
 $o-ft-icons-is-silent: true !default;
 
-/// Font-family
-///
-/// @access private
+/// Sprite sheet path (no extension)
 /// @type String
-$_o-ft-icons-font-name: 'ft-icons';
+$o-ft-icons-path: oAssetsResolve('img/spritesheet', 'o-ft-icons') !default;
 
-/// Has the font-face declaration already been output?
-///
-/// @access private
-/// @type Bool
-$_o-ft-icons-font-face-already-output: false;
+/// List of icon colors
+/// @type List
+// TODO: use $o-colors-palette when final next palette is decided
+$o-ft-icons-icon-colors: (
+	'pink':       #fff1e0,
+	'black':      #000000,
+	'white':      #ffffff,
+	'blue':       #2e6e9e,
+	'dark-blue':  #275e86,
+	'claret':     #9e2f50,
+	'orange':     #d66d06,
+	'grey-tint1': #b0b0b0,
+	'grey-tint2': #999999,
+	'grey-tint3': #777777,
+	'grey-tint4': #505050,
+	'grey-tint5': #333333,
+	'pink-tint1': #f6e9d8,
+	'pink-tint2': #e9decf,
+	'pink-tint3': #cec6b9,
+	'pink-tint4': #a7a59b,
+	'pink-tint5': #74736c
+) !default;
+
+/// Icon native size
+/// @type Number
+$o-ft-icons-icon-native-size: 50 !default;
+
+/// List of icon sizes
+/// @type Map
+$o-ft-icons-icon-sizes: (
+	'xs': 16,
+	's':  24,
+	'm':  32,
+	'l':  48,
+	'xl': 64
+) !default;
+
+/// List of icon symbols
+/// @type List
+$o-ft-icons-icon-symbols: (
+	'arrow-down',
+	'arrow-downwards',
+	'arrow-left',
+	'arrow-right',
+	'arrow-up',
+	'arrow-up-down',
+	'arrow-upwards',
+	'clippings',
+	'comment',
+	'cross',
+	'email',
+	'eye',
+	'font-size',
+	'gift',
+	'hamburger',
+	'more',
+	'printer',
+	'profile',
+	'refresh',
+	'search',
+	'section-arts',
+	'section-blogs',
+	'section-business-education',
+	'section-business-life',
+	'section-columnists',
+	'section-companies',
+	'section-ftfm',
+	'section-house-and-home',
+	'section-leader-and-letters',
+	'section-lex',
+	'section-magazine',
+	'section-markets',
+	'section-markets-data',
+	'section-money',
+	'section-special-report',
+	'section-uk',
+	'section-world',
+	'settings',
+	'share',
+	'sign-in',
+	'sign-out',
+	'social-email',
+	'social-facebook',
+	'social-linkedin',
+	'social-pinterest',
+	'social-twitter',
+	'speechbubble',
+	'subscribe',
+	'thumb-up',
+	'tick',
+	'warning'
+);
 
 /// Have the base styles already been output?
 ///

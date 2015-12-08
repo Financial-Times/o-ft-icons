@@ -1,10 +1,22 @@
+<h2>Sizes</h2>
 <ul class="demo-examples">
-	{{#icons}}
-	<li class="demo-example">
-		<i class="o-ft-icons-icon o-ft-icons-icon--{{name}} demo-icon"></i>
-		<span class="demo-label">{{name}}</span>
+	{{#sizes}}
+	<li class="demo-example" style="width: auto; margin-right: 10px;">
+		<i class="o-ft-icon o-ft-icon--{{.}} o-ft-icon--eye o-ft-icon--black demo-icon"></i>
+		<span class="demo-label">{{.}}</span>
 	</li>
-	{{/icons}}
+	{{/sizes}}
 </ul>
 
-<p class="demo-count">{{icons.length}} icons in a web font generated from SVG sources.</p>
+<h2>Icons and colours</h2>
+{{#icons}}
+<h3>{{name}}</h3>
+<ul class="demo-examples">
+	{{#colors}}
+	<li class="demo-example">
+		<i class="o-ft-icon o-ft-icon--xl o-ft-icon--{{name}} o-ft-icon--{{.}} demo-icon"></i>
+		<span class="demo-label">{{.}}</span>
+	</li>
+	{{/colors}}
+</ul>
+{{/icons}}

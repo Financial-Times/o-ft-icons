@@ -1,12 +1,13 @@
 {
-	"name": "o-ft-icons",
-	"main": ["main.scss"],
-	"ignore": [
-		"Gruntfile.js",
-		"grunt-webfont-templates",
-		"node_modules"
-	],
-	"dependencies": {
-		"o-assets": ">= 0.4.1 < 3"
-	}
+  "name": "o-ft-icons",
+  "main": [
+    "main.scss"
+  ],
+  "ignore": [
+    "node_modules"
+  ],
+  "dependencies": {
+    "o-assets": ">= 0.4.1 < 3",
+    "o-colors": "^3.3.0"
+  }
 }

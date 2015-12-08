@@ -1,102 +1,146 @@
-////
-/// @group o-ft-icons
-/// @link http://registry.origami.ft.com/components/o-ft-icons
-////
-
-/// Generate an aggregated list of selectors for an icon
+/// Generate base icon class
 ///
-/// @param {String} icon
-@function oFtIconsGetSelectors($icon) {
-	$aggregated-selector: ();
-	$aggregated-selector: append($aggregated-selector, unquote('%o-ft-icons-#{$icon}'), comma);
-	@if ($o-ft-icons-is-silent == false) {
-		$aggregated-selector: append($aggregated-selector, unquote('.o-ft-icons-#{$icon}'), comma);
+/// @private
+@mixin _oFtIconsStyles() {
+	.o-ft-icon {
+		@include oFtIconsIconStyles();
 	}
-	@return $aggregated-selector;
 }
 
-@mixin oFtIconsFontFace() {
-	@if ($_o-ft-icons-font-face-already-output == false) {
-		$_o-ft-icons-font-face-already-output: true !global;
-
-		@font-face {
-			font-family: $_o-ft-icons-font-name;
-			src: url(oAssetsResolve($_o-ft-icons-font-file-name + ".eot", o-ft-icons));
-			src: url(oAssetsResolve($_o-ft-icons-font-file-name + ".eot?#iefix", o-ft-icons)) format("embedded-opentype"),
-				url(oAssetsResolve($_o-ft-icons-font-file-name + ".woff", o-ft-icons)) format("woff"),
-				url(oAssetsResolve($_o-ft-icons-font-file-name + ".ttf", o-ft-icons)) format("truetype");
-			font-weight: normal;
-			font-style: normal;
+/// Generate icon size variation classes
+///
+/// @private
+@mixin _oFtIconsSizes() {
+	@each $key, $value in $o-ft-icons-icon-sizes {
+		.o-ft-icon--#{$key} {
+			@include oFtIconsIconSize($value);
 		}
 	}
 }
 
-/// Base styles for all icons
-@mixin oFtIconsBaseIconStyles() {
-	font-family: $_o-ft-icons-font-name;
+/// Generate icon color variation classes
+///
+/// @private
+@mixin _oFtIconsColors() {
+	@each $color-name, $color-code in $o-ft-icons-icon-colors {
+		.o-ft-icon--#{$color-name} {
+			@include oFtIconsIconColor($color-name);
+		}
+	}
+}
+
+/// Generate icon symbol variation classes
+///
+/// @private
+@mixin _oFtIconsSymbols() {
+	@each $symbol-name in $o-ft-icons-icon-symbols {
+		.o-ft-icon--#{$symbol-name} {
+			@include oFtIconsIconSymbol($symbol-name);
+		}
+	}
+}
+
+/// Base icon styles
+///
+/// @example scss
+///  @include oFtIconsIconStyles();
+@mixin oFtIconsIconStyles() {
+	position: relative;
 	display: inline-block;
-	vertical-align: middle;
-	// These are marked as !important as the icon font is not designed to be used with faux bold or faux italic styles
-	// If bolder versions of an icon are required a new SVG should be designed and added to the icon font
-	// scss-lint:disable ImportantRule
-	font-weight: normal !important;
-	font-style: normal !important;
-	speak: none;
-	text-decoration: inherit;
-	text-transform: none;
-	text-rendering: optimizeLegibility;
-	// scss-lint:disable VendorPrefix VendorPrefixes
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+	overflow: hidden;
+
+	// Create a canvas for the background because background-position X/Y
+	// cannot be manipulated individually in all browsers but absolute positioning
+	// has been supported forever.
+	&:after {
+		content: '';
+		position: absolute;
+		// Scale the canvas to the size of the background image to avoid clipping.
+		width: percentage(length($o-ft-icons-icon-colors));
+		height: percentage(length($o-ft-icons-icon-symbols));
+		// Android 2.x doesn't support SVG but does support background-size...
+		background-image: url('#{_oFtIconsImageUrl()}.png');
+		// ... however, it will download the SVG but multi-backgrounds stops it...
+		// ... however, although multi-bgs _are_ supported by IE9, gradients aren't.
+		background-image: linear-gradient(transparent, transparent), url('#{_oFtIconsImageUrl()}.svg');
+		background-size: 100%;
+	}
 }
 
-/// Placeholder (and optionally concrete class) for individual icon (modern browsers)
+/// Specify icon size
 ///
-/// @access private
+/// @example scss
+///  @include oFtIconsIconSize(32);
 ///
-/// @param {String} $icon-class
-/// @param {String} $character-code - Unicode character code (e.g. f101)
-/// @param {String} $placement [before] - before|after
-@mixin _oFtIconsStandardsIcon($icon-class, $character-code, $placement: 'before') {
-	$icon-selectors: oFtIconsGetSelectors("#{$icon-class}:#{$placement}");
-	#{$icon-selectors} {
-		// Escaping in Sass is a bit of a mess…
-		// https://github.com/sass/sass/issues/659
-		@if function-exists(selector-nest) {
-			// Sass 3.4
-			content: #{'\"\\' + $character-code + "\""};
-		} @else {
-			// LibSass
-			// Escaping:
-			// https://github.com/sass/libsass/issues/1271
-			//
-			// Outputs a unicode entity instead of a code such as "\f102":
-			// https://github.com/sass/libsass/issues/1231
-			content: "#{'\"\\' + $character-code + "\""}";
+/// @param {Number|String} $icon-size - Icon size in px or keyword
+@mixin oFtIconsIconSize($icon-size) {
+	@if (type-of($icon-size) == 'string') {
+		$icon-size: map-get($o-ft-icons-icon-sizes, $icon-size);
+	}
+
+	@if (type-of($icon-size) != 'number') {
+		@error 'Given size keyword is not configured.';
+	}
+
+	width: $icon-size + px;
+	height: $icon-size + px;
+
+	&:after {
+		// Old IE fallback uses zoom to scale icon size.
+		// Other browsers have implemented zoom so it needs scoping to IE only.
+		zoom: _oFtIconsIeZoomLevel($icon-size);
+
+		@media all and (min-width: 0) {
+			// IE9 doesn't support keyword values ಠ_ಠ
+			zoom: 1;
 		}
 	}
 }
 
-/// Placeholder (and optionally concrete class) for individual icon (IE7 hack)
+/// Specify icon color
 ///
-/// @access private
+/// @example scss
+///  @include oFtIconsIconColor('blue');
 ///
-/// @param {String} icon-class
-/// @param {String} character-code - Unicode character code (e.g. f101)
-@mixin _oFtIconsIe7Icon($icon-class, $character-code) {
-	$icon-selectors: oFtIconsGetSelectors($icon-class);
-	#{$icon-selectors} {
-		// Weird way of writing this so that Libsass can read it…
-		#{unquote('*') + zoom}: unquote("expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = ") + "'&#x#{$character-code};&nbsp;'" + unquote(")");
+/// @param {String} $color-name - Name of color from palette
+@mixin oFtIconsIconColor($color-name) {
+	&:after {
+		left: _oFtIconsImagePositionX($color-name, $fallback: true);
+
+		@media all and (min-width: 0) {
+			left: _oFtIconsImagePositionX($color-name);
+		}
 	}
 }
 
-/// Icon styles for $icon-name
+/// Specify icon symbol
 ///
-/// @param {String} icon-name
-/// @param {String} character-code - Unicode character code (e.g. f101)
-@mixin oFtIconsIcon($icon-name, $character-code) {
-	@include _oFtIconsIe7Icon(icon--#{$icon-name}, $character-code);
-	@include _oFtIconsStandardsIcon(icon--#{$icon-name}, $character-code);
-	@include _oFtIconsStandardsIcon(icon--#{$icon-name}--after, $character-code, after);
+/// @example scss
+///  @include oFtIconsIconName('hamburger');
+///
+/// @param {String} $symbol-name - Name of symbol from symbols list
+@mixin oFtIconsIconSymbol($symbol-name) {
+	&:after {
+		top: _oFtIconsImagePositionY($symbol-name, $fallback: true);
+
+		@media all and (min-width: 0) {
+			top: _oFtIconsImagePositionY($symbol-name);
+		}
+	}
+}
+
+/// Add an icon specifying size, color and name.
+///
+/// @example scss
+///  @include oFtIconsIcon(32, 'blue', 'hamburger');
+///  @include oFtIconsIcon('s', 'blue', 'hamburger');
+///
+/// @param {Number|String} $icon-size - Icon size in px or keyword
+/// @param {String} $color-name - Name of color from palette
+/// @param {String} $symbol-name - Name of symbol from symbols list
+@mixin oFtIconsIcon($icon-size, $color-name, $symbol-name) {
+	@include oFtIconsIconStyles();
+	@include oFtIconsIconSize($icon-size);
+	@include oFtIconsIconColor($color-name);
+	@include oFtIconsIconSymbol($symbol-name);
 }
