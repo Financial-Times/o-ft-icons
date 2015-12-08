@@ -32,7 +32,7 @@ $o-ft-icons-is-silent: false;
 
 ```html
 <!-- In your markup, use the helper classes, such as: -->
-<i class="o-ft-icon o-ft-icon--{size} o-ft-icon--{colour} o-ft-icon--{icon}"><i>
+<i class="o-ft-icon o-ft-icon--{size} o-ft-icon--{color} o-ft-icon--{symbol}"><i>
 ```
 
 ### 2. Using mixins to create your own classes
@@ -44,27 +44,33 @@ $o-ft-icons-is-silent: false;
 
 .icon-columnists {
 	@include oFtIconsIconStyles();
-	@include oFtIconsIconName('section-columnists');
+	// Name of symbol from symbols list
+	@include oFtIconsIconSymbol('section-columnists');
 }
 
 .icon-columnists--large {
-	// Must be a preconfigured size
+	// Icon size in px or keyword
 	@include oFtIconsIconSize('l');
 }
 
 .icon-columnists--claret {
-	// Named colour from o-colors
+	// Name of color from palette
 	@include oFtIconsIconColor('claret');
 }
 
-.icon-hamburger {
-	// Quick use mixin to specify size, colour and icon name
+.hamburger {
+	// Quick use mixin to specify size, color and symbol
 	@include oFtIconsIcon('s', 'black', 'hamburger');
+
+	&.is-active {
+		@include oFtIconsIconColor('blue');
+	}
 }
 ```
 
 ```html
 <i class="icon-columnists icon-columnists--large-claret"></i>
+<i class="hamburger"></i>
 ```
 
 ## Add / edit icons, build the sprite sheet and demo page
