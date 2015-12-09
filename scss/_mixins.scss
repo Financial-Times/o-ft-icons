@@ -45,6 +45,7 @@
 /// @example scss
 ///  @include oFtIconsIconStyles();
 @mixin oFtIconsIconStyles() {
+	/* autoprefixer: off */
 	position: relative;
 	display: inline-block;
 	overflow: hidden;
@@ -60,8 +61,11 @@
 		height: percentage(length($o-ft-icons-icon-symbols));
 		// Android 2.x doesn't support SVG but does support background-size...
 		background-image: url('#{_oFtIconsImageUrl()}.png');
-		// ... however, it will download the SVG but multi-backgrounds stops it...
-		// ... however, although multi-bgs _are_ supported by IE9, gradients aren't.
+		// ... however, it will download the SVG but multi-backgrounds stops it.
+		// ... however, although multi-bgs are supported by IE9, gradients aren't.
+		// <http://pauginer.com/post/36614680636/invisible-gradient-technique>
+		// scss-lint:disable NameFormat
+		background-image: -webkit-linear-gradient(transparent, transparent), url('#{_oFtIconsImageUrl()}.svg');
 		background-image: linear-gradient(transparent, transparent), url('#{_oFtIconsImageUrl()}.svg');
 		background-size: 100%;
 	}
@@ -82,6 +86,7 @@
 		@error 'Given size keyword is not configured.';
 	}
 
+	/* autoprefixer: off */
 	width: $icon-size + px;
 	height: $icon-size + px;
 
