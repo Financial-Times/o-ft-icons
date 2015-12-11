@@ -67,6 +67,7 @@
 		// scss-lint:disable NameFormat
 		background-image: -webkit-linear-gradient(transparent, transparent), url('#{_oFtIconsImageUrl()}.svg');
 		background-image: linear-gradient(transparent, transparent), url('#{_oFtIconsImageUrl()}.svg');
+		-webkit-background-size: 100%;
 		background-size: 100%;
 	}
 }
