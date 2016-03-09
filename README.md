@@ -1,26 +1,26 @@
 # o-ft-icons [![Build Status](https://travis-ci.org/Financial-Times/o-ft-icons.png?branch=master)](https://travis-ci.org/Financial-Times/o-ft-icons)
 
-Icon font with helper classes, and resolution-independant SVG icons to load via the [responsive image service](http://image.webservices.ft.com).
+Icon font with helper classes, and resolution-independent SVG icons to load via the [responsive image service](http://image.webservices.ft.com).
 
 ## Quick start
 
 ```html
 <!-- Load web fonts with @font-face declarations  -->
-<link rel="stylesheet" href="//build.origami.ft.com/bundles/css?modules=o-ft-icons@^2.0.0" />
+<link rel="stylesheet" href="//build.origami.ft.com/v2/bundles/css?modules=o-ft-icons@^2.0.0" />
 
 <!-- In your markup, use the helper classes, such as: -->
 <i class="o-ft-icons-icon o-ft-icons-icon--arrow-down"></i>
 ```
 
-[Complete list of available icons](http://build.origami.ft.com/files/o-ft-icons@latest/demos/main.html)
+[Complete list of available icons](http://build.origami.ft.com/v2/files/o-ft-icons@latest/demos/main.html)
 
 ## Advanced usage
 
 There are multiple ways to use the icons:
 
 1. Using the CSS helper classes
-2. Extending the predefined Sass placeholders into your own CSS classes
-3. Resolution independant SVGs, using the [responsive image service](http://image.webservices.ft.com/)
+1. Extending the predefined Sass placeholders into your own CSS classes
+1. Resolution independent SVGs, using the [responsive image service](http://image.webservices.ft.com/)
 
 ### 1. Using the CSS helper classes
 
@@ -59,9 +59,9 @@ $o-ft-icons-is-silent: false;
 <i class="icon-columnists"></i>
 ```
 
-### 3. Resolution independant SVGs, using the image service
+### 3. Resolution independent SVGs, using the image service
 
-The [responsive image service](http://image.webservices.ft.com/) helps serving resolution-independant SVG icons with a resized PNG fallback:
+The [responsive image service](http://image.webservices.ft.com/) helps serving resolution-independent SVG icons with a resized PNG fallback:
 
 ```scss
 element {
@@ -73,15 +73,19 @@ element {
 	background-image: url('//image.webservices.ft.com/v1/images/raw/fticon:tick?width=100&format=png&source=my-product');
 
 	// Modern browsers: SVG covering the whole size of the element
-	// we declare mutliple backgrounds so that only modern browsers read this property
+	// we declare multiple backgrounds so that only modern browsers read this property
 	background-image: url('//image.webservices.ft.com/v1/images/raw/fticon:tick?format=svg&source=my-product'), none;
 	background-size: cover;
 }
 ```
 
+We provide a mixin to make this easier which is documented in Sassdoc [http://registry.origami.ft.com/components/o-ft-icons#docs-css](http://registry.origami.ft.com/components/o-ft-icons#docs-css).
+
 ----
 
 ## Add / edit icons, build the web font and demo page
+
+**warning** Fontforge is notoriously flaky at the moment. We are planning to deprecate its use shortly so if you need to make a minor amendment and these steps don't work for you first time, it might be worth getting someone who has fontforge working on their machine already to make the change. If you really want to try and get this running on your machine and it's giving you trouble, a gist of the steps I tried is here: https://gist.github.com/alicebartlett/1e785aa6a9baa8876d3f
 
 1. Install the following:
 
@@ -93,7 +97,7 @@ element {
 
 		git clone https://github.com/Financial-Times/o-ft-icons.git
 		cd o-ft-icons
-		npm install
+		obt install
 
 3. Add or edit an SVG file to the `svg` folder (see [SVG file naming rules](#svg-file-naming-rules)).
 4. Generate the web font from the SVG sources:
