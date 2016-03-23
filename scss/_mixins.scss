@@ -100,3 +100,42 @@
 	@include _oFtIconsStandardsIcon(icon--#{$icon-name}, $character-code);
 	@include _oFtIconsStandardsIcon(icon--#{$icon-name}--after, $character-code, after);
 }
+
+
+@mixin oFtIconsGetSvg($icon-name, $color: null, $container-width: 20, $container-height: null, $apply-base-styles: true) {
+	$service-url: "https://image.webservices.ft.com/v1/images/raw/fticon:#{$icon-name}";
+	$query: "?source=ofticons";
+
+	@if $color != null {
+		$color: str-slice(ie-hex-str($color), 4);
+		$query: $query + "&tint=%23#{$color},%23#{$color}";
+	}
+
+	@if ($o-ft-icons-use-local-assets == true and $color == null) {
+		background-image: url(oAssetsResolve("svg/#{$icon-name}.svg", o-ft-icons));
+	} @else {
+		background-image: url($service-url + $query + "&format=svg");
+	}
+
+	// ie7/8 fallback. Uses the `\9` selector hack to target ie6-8.
+	// Hack is documented here: http://browserhacks.com/#hack-ab1bcc7b3a6544c99260f7608f8e845e
+	// It still needs to use the build service  <-- what does this comment mean?
+	background-image: url($service-url + $query + "&format=png&width=#{$container-width}")\9;
+
+	@if ($apply-base-styles == true) {
+		display: inline-block;
+		width: $container-width + 0px;
+		@if ($container-height == null) {
+			$container-height: $container-width;
+		}
+		height: $container-height + 0px;
+		background-repeat: no-repeat;
+
+		// Doesn't work in ie8/7/6 in these cases the icon will fill the available space,
+		// which is fine if the containing box is the same shape as the icon (which they mostly will be)
+		background-size: contain;
+		background-position: 50%;
+		background-color: transparent;
+		vertical-align: middle;
+	}
+}

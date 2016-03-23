@@ -24,3 +24,9 @@ $_o-ft-icons-font-face-already-output: false;
 /// @access private
 /// @type Bool
 $_o-ft-icons-base-styles-already-output: false !default;
+
+/// Whether SVG icon mixin should use the image service or serve
+/// local assets
+///
+/// @type Bool
+$o-ft-icons-use-local-assets: false !default;
