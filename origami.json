@@ -28,8 +28,7 @@
             "sass": "demos/src/demo.scss",
             "data": "demos/src/svg.json",
             "expanded": false,
-            "description": "",
-            "path": "/demos/svg.html"
+            "description": ""
         }
     ]
 }
