@@ -19,8 +19,7 @@
             "sass": "demos/src/demo.scss",
             "data": "demos/src/data.json",
             "expanded": true,
-            "description": "",
-            "path": "/demos/main.html"
+            "description": ""
         },
         {
             "name": "svg",
