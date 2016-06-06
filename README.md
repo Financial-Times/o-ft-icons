@@ -1,5 +1,9 @@
 # o-ft-icons [![Build Status](https://circleci.com/gh/Financial-Times/o-ft-icons.png?style=shield&circle-token=bd79f68bf3b7af081ef39c62e493e737d56d2958)](https://circleci.com/gh/Financial-Times/o-ft-icons)
 
+### This module is now deprecated, please use [o-icons](http://registry.origami.ft.com/components/o-icons) instead.
+
+***
+
 Icon font with helper classes, and resolution-independent SVG icons to load via the [responsive image service](http://image.webservices.ft.com).
 
 ## Quick start
