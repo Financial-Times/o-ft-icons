@@ -25,7 +25,7 @@
 /// @param {Bool} $use-local-assets - defaults to true, if true will look for the SVGs to use locally rather than via the image service. Doesn't apply to the fallback which will always be requested from the image service.
 
 @mixin oFtIconsGetSvg($icon-name, $color: null, $container-width: 20, $container-height: null, $apply-base-styles: true) {
-	$service-url: "https://image.webservices.ft.com/v1/images/raw/fticon:#{$icon-name}";
+	$service-url: "https://www.ft.com/__origami/service/image/v2/images/raw/fticon:#{$icon-name}";
 	$query: "?source=ofticons";
 
 	@if $color != null {
