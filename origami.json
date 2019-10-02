@@ -3,7 +3,7 @@
     "origamiType": "module",
     "origamiVersion": 1,
     "support": "https://github.com/Financial-Times/o-ft-icons/issues",
-    "supportStatus": "deprecated",
+    "supportStatus": "dead",
     "browserFeatures": {
         "required": [
             "fontface"
